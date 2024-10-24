@@ -35,7 +35,7 @@ def test_transcribe():
         if header=="seq98":#in header seq98, check if the transcribed sequence is "GCUCGCUCUUUGCGCGAUUGAUCGUUGGCCUUGUUGUUACGACCCAACUUAAACUAAGCGUGGGCUGCUAGUGAUCUCUCAAAUAGACCCUGAGGCCCUG"
             assert "GCUCGCUCUUUGCGCGAUUGAUCGUUGGCCUUGUUGUUACGACCCAACUUAAACUAAGCGUGGGCUGCUAGUGAUCUCUCAAAUAGACCCUGAGGCCCUG"==transcribe(sequence)
 
-    #pass
+    
     for header,sequence,quality in FastqParser('data/test.fq'):#go though everything in test.fq
         if header=="seq99":#in header seq99, check if the transcribed sequence is "GGCUCAAAACAUCACCCGAGUUGACUUUAGGAUAAGAAUCUGCUAACCAGUAUUUUGGGAAAGUGACAUGCCUGCAUCUGGGACGAGGCAGAAGGUCGUC"
             assert "GGCUCAAAACAUCACCCGAGUUGACUUUAGGAUAAGAAUCUGCUAACCAGUAUUUUGGGAAAGUGACAUGCCUGCAUCUGGGACGAGGCAGAAGGUCGUC"==transcribe(sequence)
@@ -53,10 +53,11 @@ def test_reverse_transcribe():
         if header=="seq98":#in header seq98, check if the reversed transcribed sequence is "GUCCCGGAGUCCCAGAUAAACUCUCUAGUGAUCGUCGGGUGCGAAUCAAAUUCAACCCAGCAUUGUUGUUCCGGUUGCUAGUUAGCGCGUUUCUCGCUCG"
             assert "GUCCCGGAGUCCCAGAUAAACUCUCUAGUGAUCGUCGGGUGCGAAUCAAAUUCAACCCAGCAUUGUUGUUCCGGUUGCUAGUUAGCGCGUUUCUCGCUCG"==reverse_transcribe(sequence)
 
-    #pass
+    
     for header,sequence,quality in FastqParser('data/test.fq'):#go though everything in test.fq
         if header=="seq99":#in header seq99, check if the reversed transcribed sequence is "CUGCUGGAAGACGGAGCAGGGUCUACGUCCGUACAGUGAAAGGGUUUUAUGACCAAUCGUCUAAGAAUAGGAUUUCAGUUGAGCCCACUACAAAACUCGG"
             assert "CUGCUGGAAGACGGAGCAGGGUCUACGUCCGUACAGUGAAAGGGUUUUAUGACCAAUCGUCUAAGAAUAGGAUUUCAGUUGAGCCCACUACAAAACUCGG"==reverse_transcribe(sequence)
         if header=="seq98":#in header seq98, check if the reversed transcribed sequence is "GUGACAUAUAGUGCUGCGAUGUUAUUUGAUCAGUUGAUGUAGGAGCUUCCACUGUACUGGAGGACAUGUAGACGGGCUACCUAAAGGCUACGGGCAGGUU"
             assert "GUGACAUAUAGUGCUGCGAUGUUAUUUGAUCAGUUGAUGUAGGAGCUUCCACUGUACUGGAGGACAUGUAGACGGGCUACCUAAAGGCUACGGGCAGGUU"==reverse_transcribe(sequence)
-    #pass
+    
+#I don't think it is necessary to write negative unit tests for transcribe and reverse_transcribe functions. Based on main.py, these two functions are dependent are parsing functions. If parsing functions raise warnings (in reality, an error will be raised), no surther step should be taken. Since negative unit tests have been written for parse functions, maybe doing so will be redundant for these two functions. 

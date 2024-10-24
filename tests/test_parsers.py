@@ -31,13 +31,19 @@ def test_FastaParser():
     your FastaParser class and assert that it properly
     reads in the example Fasta File.
     """
-    #pass
+
+    #positive unit tests
     for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
         if header=="seq99":#in header seq99, check if the sequence is "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"
             assert "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"==sequence
         if header=="seq98":#in header seq98, check if the sequence is "CGAGCGAGAAACGCGCTAACTAGCAACCGGAACAACAATGCTGGGTTGAATTTGATTCGCACCCGACGATCACTAGAGAGTTTATCTGGGACTCCGGGAC"
             assert "CGAGCGAGAAACGCGCTAACTAGCAACCGGAACAACAATGCTGGGTTGAATTTGATTCGCACCCGACGATCACTAGAGAGTTTATCTGGGACTCCGGGAC"==sequence
-    
+    #negative unit tests
+    for header,sequence in FastaParser('data/1.txt'):#go though everything in 1.txt
+        pass
+        #you should see warnings 
+        
+
     
 def test_FastqParser():
     """
@@ -46,10 +52,13 @@ def test_FastqParser():
     your FastqParser class and assert that it properly
     reads in the example Fastq File.
     """
-
+    #positive unit tests
     for header, sequence, quality in FastqParser('data/test.fq'):#go though everything in test.fq
         if header=="seq99":#in header seq99, check if the sequence is "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"
             assert "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"==sequence
         if header=="seq98":#in header seq98, check if the sequence is "AACCTGCCCGTAGCCTTTAGGTAGCCCGTCTACATGTCCTCCAGTACAGTGGAAGCTCCTACATCAACTGATCAAATAACATCGCAGCACTATATGTCAC"
             assert "AACCTGCCCGTAGCCTTTAGGTAGCCCGTCTACATGTCCTCCAGTACAGTGGAAGCTCCTACATCAACTGATCAAATAACATCGCAGCACTATATGTCAC"==sequence
-    #pass
+    #negative unit tests
+    for header,sequence,quality in FastaParser('data/2.txt'):#go though everything in 2.txt
+        pass
+        #you should see warnings 

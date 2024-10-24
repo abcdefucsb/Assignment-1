@@ -1,6 +1,6 @@
 import io
 from typing import Tuple, Union
-
+import warnings
 
 class Parser:
     """
@@ -111,8 +111,12 @@ class FastaParser(Parser):
                 header=line[1:]
             elif line.startswith(("A","T","C","G")):#if line starts with A, C, T, G, take it as sequence
                 for char in line:
-                    sequence += char
-                    
+                    if char in ("A","T","C","G"):
+                        sequence += char
+                    else:
+                        warnings.warn("wrong letters")#if wrong letters are found in it, raise a warning
+            else:
+                warnings.warn("wrong input")#otherwise,it is a wrong input. Raise a warning 
             if (header != "") and (sequence != ""):#if both two variables are not empty, return them as a tuple
                 return (header.strip(),sequence.strip())
             
@@ -138,7 +142,10 @@ class FastqParser(Parser):
                 pass
             elif line.startswith(("A","C","T","G")):#if line starts with A, C, T, G, take it as sequence
                 for char in line:
-                    sequence += char
+                    if char in ("A","T","C","G"):
+                        sequence += char
+                    else:
+                        warnings.warn("wrong letters")#if wrong letters are found in it, raise a warning
              
             else:#otherwise, take it as quality
                 quality=line[0:]
