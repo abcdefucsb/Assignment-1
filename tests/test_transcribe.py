@@ -29,14 +29,23 @@ def test_transcribe():
     transcribe function here.
     """
 
-    for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
+    for result in FastaParser('data/test.fa'):#go though everything in test.fa
+        (header,sequence)=result#unpack the tuple
+        assert type(result)==tuple#check types
+        assert type(sequence)==str
+        assert type(header)==str
         if header=="seq99":#in header seq99, check if the transcribed sequence is "GUUUGGCCGCUACGCCCAUGAGGGAUGUUCAACCUGAGGCGUCGCUUGCGGCGUCCCCGGUAAUAUGCCGCCAGAACCGCCGCAGCUGGUCCGGCCAGGU"
             assert "GUUUGGCCGCUACGCCCAUGAGGGAUGUUCAACCUGAGGCGUCGCUUGCGGCGUCCCCGGUAAUAUGCCGCCAGAACCGCCGCAGCUGGUCCGGCCAGGU"==transcribe(sequence)
         if header=="seq98":#in header seq98, check if the transcribed sequence is "GCUCGCUCUUUGCGCGAUUGAUCGUUGGCCUUGUUGUUACGACCCAACUUAAACUAAGCGUGGGCUGCUAGUGAUCUCUCAAAUAGACCCUGAGGCCCUG"
             assert "GCUCGCUCUUUGCGCGAUUGAUCGUUGGCCUUGUUGUUACGACCCAACUUAAACUAAGCGUGGGCUGCUAGUGAUCUCUCAAAUAGACCCUGAGGCCCUG"==transcribe(sequence)
 
     
-    for header,sequence,quality in FastqParser('data/test.fq'):#go though everything in test.fq
+    for result in FastqParser('data/test.fq'):#go though everything in test.fq
+        (header,sequence,quality)=result#unpack the tuple
+        assert type(result)==tuple#check types
+        assert type(sequence)==str
+        assert type(header)==str
+        assert type(quality)==str
         if header=="seq99":#in header seq99, check if the transcribed sequence is "GGCUCAAAACAUCACCCGAGUUGACUUUAGGAUAAGAAUCUGCUAACCAGUAUUUUGGGAAAGUGACAUGCCUGCAUCUGGGACGAGGCAGAAGGUCGUC"
             assert "GGCUCAAAACAUCACCCGAGUUGACUUUAGGAUAAGAAUCUGCUAACCAGUAUUUUGGGAAAGUGACAUGCCUGCAUCUGGGACGAGGCAGAAGGUCGUC"==transcribe(sequence)
         if header=="seq98":#in header seq98, check if the transcribed sequence is "UUGGACGGGCAUCGGAAAUCCAUCGGGCAGAUGUACAGGAGGUCAUGUCACCUUCGAGGAUGUAGUUGACUAGUUUAUUGUAGCGUCGUGAUAUACAGUG"
@@ -47,14 +56,23 @@ def test_reverse_transcribe():
     TODO: Write your unit test for the
     reverse transcribe function here.
     """
-    for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
+    for result in FastaParser('data/test.fa'):#go though everything in test.fa
+        (header,sequence)=result#unpack the tuple
+        assert type(result)==tuple#check types
+        assert type(sequence)==str
+        assert type(header)==str
         if header=="seq99":#in header seq99, check if the reversed transcribed sequence is "UGGACCGGCCUGGUCGACGCCGCCAAGACCGCCGUAUAAUGGCCCCUGCGGCGUUCGCUGCGGAGUCCAACUUGUAGGGAGUACCCGCAUCGCCGGUUUG"
             assert "UGGACCGGCCUGGUCGACGCCGCCAAGACCGCCGUAUAAUGGCCCCUGCGGCGUUCGCUGCGGAGUCCAACUUGUAGGGAGUACCCGCAUCGCCGGUUUG"==reverse_transcribe(sequence)
         if header=="seq98":#in header seq98, check if the reversed transcribed sequence is "GUCCCGGAGUCCCAGAUAAACUCUCUAGUGAUCGUCGGGUGCGAAUCAAAUUCAACCCAGCAUUGUUGUUCCGGUUGCUAGUUAGCGCGUUUCUCGCUCG"
             assert "GUCCCGGAGUCCCAGAUAAACUCUCUAGUGAUCGUCGGGUGCGAAUCAAAUUCAACCCAGCAUUGUUGUUCCGGUUGCUAGUUAGCGCGUUUCUCGCUCG"==reverse_transcribe(sequence)
 
     
-    for header,sequence,quality in FastqParser('data/test.fq'):#go though everything in test.fq
+    for result in FastqParser('data/test.fq'):#go though everything in test.fq
+        (header,sequence,quality)=result#unpack the tuple
+        assert type(result)==tuple#check types
+        assert type(sequence)==str
+        assert type(header)==str
+        assert type(quality)==str
         if header=="seq99":#in header seq99, check if the reversed transcribed sequence is "CUGCUGGAAGACGGAGCAGGGUCUACGUCCGUACAGUGAAAGGGUUUUAUGACCAAUCGUCUAAGAAUAGGAUUUCAGUUGAGCCCACUACAAAACUCGG"
             assert "CUGCUGGAAGACGGAGCAGGGUCUACGUCCGUACAGUGAAAGGGUUUUAUGACCAAUCGUCUAAGAAUAGGAUUUCAGUUGAGCCCACUACAAAACUCGG"==reverse_transcribe(sequence)
         if header=="seq98":#in header seq98, check if the reversed transcribed sequence is "GUGACAUAUAGUGCUGCGAUGUUAUUUGAUCAGUUGAUGUAGGAGCUUCCACUGUACUGGAGGACAUGUAGACGGGCUACCUAAAGGCUACGGGCAGGUU"

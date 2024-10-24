@@ -33,7 +33,11 @@ def test_FastaParser():
     """
 
     #positive unit tests
-    for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
+    for result in FastaParser('data/test.fa'):#go though everything in test.fa
+        (header,sequence)=result#unpack the tuple
+        assert type(result)==tuple#check types
+        assert type(sequence)==str
+        assert type(header)==str
         if header=="seq99":#in header seq99, check if the sequence is "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"
             assert "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"==sequence
         if header=="seq98":#in header seq98, check if the sequence is "CGAGCGAGAAACGCGCTAACTAGCAACCGGAACAACAATGCTGGGTTGAATTTGATTCGCACCCGACGATCACTAGAGAGTTTATCTGGGACTCCGGGAC"
@@ -53,7 +57,12 @@ def test_FastqParser():
     reads in the example Fastq File.
     """
     #positive unit tests
-    for header, sequence, quality in FastqParser('data/test.fq'):#go though everything in test.fq
+    for result in FastqParser('data/test.fq'):#go though everything in test.fq
+        (header,sequence,quality)=result#unpack the tuple
+        assert type(result)==tuple#check types
+        assert type(sequence)==str
+        assert type(header)==str
+        assert type(quality)==str
         if header=="seq99":#in header seq99, check if the sequence is "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"
             assert "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"==sequence
         if header=="seq98":#in header seq98, check if the sequence is "AACCTGCCCGTAGCCTTTAGGTAGCCCGTCTACATGTCCTCCAGTACAGTGGAAGCTCCTACATCAACTGATCAAATAACATCGCAGCACTATATGTCAC"
