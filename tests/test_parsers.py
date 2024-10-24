@@ -32,10 +32,10 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
     #pass
-    for header,sequence in FastaParser('data/test.fa'):
-        if header=="seq99":
+    for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
+        if header=="seq99":#in header seq99, check if the sequence is "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"
             assert "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"==sequence
-        if header=="seq98":
+        if header=="seq98":#in header seq98, check if the sequence is "CGAGCGAGAAACGCGCTAACTAGCAACCGGAACAACAATGCTGGGTTGAATTTGATTCGCACCCGACGATCACTAGAGAGTTTATCTGGGACTCCGGGAC"
             assert "CGAGCGAGAAACGCGCTAACTAGCAACCGGAACAACAATGCTGGGTTGAATTTGATTCGCACCCGACGATCACTAGAGAGTTTATCTGGGACTCCGGGAC"==sequence
     
     
@@ -47,9 +47,9 @@ def test_FastqParser():
     reads in the example Fastq File.
     """
 
-    for header, sequence, quality in FastqParser('data/test.fq'):
-        if header=="seq99":
+    for header, sequence, quality in FastqParser('data/test.fq'):#go though everything in test.fq
+        if header=="seq99":#in header seq99, check if the sequence is "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"
             assert "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"==sequence
-        if header=="seq98":
+        if header=="seq98":#in header seq98, check if the sequence is "AACCTGCCCGTAGCCTTTAGGTAGCCCGTCTACATGTCCTCCAGTACAGTGGAAGCTCCTACATCAACTGATCAAATAACATCGCAGCACTATATGTCAC"
             assert "AACCTGCCCGTAGCCTTTAGGTAGCCCGTCTACATGTCCTCCAGTACAGTGGAAGCTCCTACATCAACTGATCAAATAACATCGCAGCACTATATGTCAC"==sequence
     #pass

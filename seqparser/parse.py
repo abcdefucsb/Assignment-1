@@ -103,17 +103,17 @@ class FastaParser(Parser):
         """
         TODO: returns the next fasta record as a 2-tuple of (header, sequence)
         """
-        header=""
+        header=""#initiate header, sequence with empty strings
         sequence=""
-        for line in f_obj:
-            line=line.strip()
-            if line.startswith(">seq"):             
+        for line in f_obj:#go though everything in f_obj
+            line=line.strip()#strip the empty space
+            if line.startswith(">seq"):#if line starts with >seq, take it as header             
                 header=line[1:]
-            elif line.startswith(("A","T","C","G")):
+            elif line.startswith(("A","T","C","G")):#if line starts with A, C, T, G, take it as sequence
                 for char in line:
                     sequence += char
                     
-            if (header != "") and (sequence != ""):
+            if (header != "") and (sequence != ""):#if both two variables are not empty, return them as a tuple
                 return (header.strip(),sequence.strip())
             
         
@@ -127,22 +127,22 @@ class FastqParser(Parser):
         """
         TODO: returns the next fastq record as a 3-tuple of (header, sequence, quality)
         """
-        header=""
+        header=""#initiate header, sequence, quality with empty strings
         sequence=""
         quality=""
-        for line in f_obj:
-            line=line.strip()
-            if line.startswith("@seq"):
+        for line in f_obj:#go though everything in f_obj
+            line=line.strip()#strip the empty space
+            if line.startswith("@seq"):#if line starts with @seq, take it as header
                 header=line[1:]
-            elif line.startswith("+ "):
+            elif line.startswith("+ "):#if line starts with + and a space, pass it
                 pass
-            elif line.startswith(("A","C","T","G")):
+            elif line.startswith(("A","C","T","G")):#if line starts with A, C, T, G, take it as sequence
                 for char in line:
                     sequence += char
              
-            else:
+            else:#otherwise, take it as quality
                 quality=line[0:]
                 
-            if (header != "") and (sequence != "") and (quality != ""):
+            if (header != "") and (sequence != "") and (quality != ""):#if all three variables are not empty, return them as a tuple
                 return (header.strip(),sequence.strip(),quality.strip())
            

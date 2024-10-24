@@ -8,39 +8,33 @@ def main():
     """
     TODO: The main function
     """
-    # Create instance of FastaParser
-    aparser = FastaParser('data/test.fa')
+    
+    aparser = FastaParser('data/test.fa')# Create instance of FastaParser
 
-    # Create instance of FastqParser
-    qparser=FastqParser('data/test.fq')
+    
+    qparser=FastqParser('data/test.fq')# Create instance of FastqParser
         
-    # For each record of FastaParser, Transcribe the sequence
-    # and print it to console
-    for header, sequence in aparser:
+  
+    for header, sequence in aparser: #go through evrything in aparser, print out the header, print out the transcribed sequence, and print out "aparser_transcribe"
         print(header)
         print(transcribe(sequence))
         print("aparser_transcribe")
        
-    # For each record of FastqParser, Transcribe the sequence
-    # and print it to console
-    for header, sequence, quality in qparser:
+
+    for header, sequence, quality in qparser:#go through evrything in qparser, print out the header, print out the transcribed sequence, and print out "qparser_transcribe"
         print(header)
         print(transcribe(sequence))
         print("qparser_transcribe")
 
 
-    # For each record of FastaParser, Reverse Transcribe the sequence
-    # and print it to console
-    for header,sequence in aparser:
+
+    for header,sequence in aparser:#go through evrything in aparser, print out the header, print out the reversed transcribed sequence, and print out "aparser_reverse_transcribe"
         print(header)
         print(reverse_transcribe(sequence))
         print("aparser_reverse_transcribe")
     
-       
-    # For each record of FastqParser, Reverse Transcribe the sequence
-    # and print it to console
 
-    for header,sequence,quality in qparser:
+    for header,sequence,quality in qparser:#go through evrything in qparser, print out the header, print out the reversed transcribed sequence, and print out "qparser_reverse_transcribe"
         print(header)
         print(reverse_transcribe(sequence))
         print("qparser_reverse_transcribe")

@@ -29,17 +29,17 @@ def test_transcribe():
     transcribe function here.
     """
 
-    for header,sequence in FastaParser('data/test.fa'):
-        if header=="seq99":
+    for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
+        if header=="seq99":#in header seq99, check if the transcribed sequence is "GUUUGGCCGCUACGCCCAUGAGGGAUGUUCAACCUGAGGCGUCGCUUGCGGCGUCCCCGGUAAUAUGCCGCCAGAACCGCCGCAGCUGGUCCGGCCAGGU"
             assert "GUUUGGCCGCUACGCCCAUGAGGGAUGUUCAACCUGAGGCGUCGCUUGCGGCGUCCCCGGUAAUAUGCCGCCAGAACCGCCGCAGCUGGUCCGGCCAGGU"==transcribe(sequence)
-        if header=="seq98":
+        if header=="seq98":#in header seq98, check if the transcribed sequence is "GCUCGCUCUUUGCGCGAUUGAUCGUUGGCCUUGUUGUUACGACCCAACUUAAACUAAGCGUGGGCUGCUAGUGAUCUCUCAAAUAGACCCUGAGGCCCUG"
             assert "GCUCGCUCUUUGCGCGAUUGAUCGUUGGCCUUGUUGUUACGACCCAACUUAAACUAAGCGUGGGCUGCUAGUGAUCUCUCAAAUAGACCCUGAGGCCCUG"==transcribe(sequence)
 
     #pass
-    for header,sequence,quality in FastqParser('data/test.fq'):
-        if header=="seq99":
+    for header,sequence,quality in FastqParser('data/test.fq'):#go though everything in test.fq
+        if header=="seq99":#in header seq99, check if the transcribed sequence is "GGCUCAAAACAUCACCCGAGUUGACUUUAGGAUAAGAAUCUGCUAACCAGUAUUUUGGGAAAGUGACAUGCCUGCAUCUGGGACGAGGCAGAAGGUCGUC"
             assert "GGCUCAAAACAUCACCCGAGUUGACUUUAGGAUAAGAAUCUGCUAACCAGUAUUUUGGGAAAGUGACAUGCCUGCAUCUGGGACGAGGCAGAAGGUCGUC"==transcribe(sequence)
-        if header=="seq98":
+        if header=="seq98":#in header seq98, check if the transcribed sequence is "UUGGACGGGCAUCGGAAAUCCAUCGGGCAGAUGUACAGGAGGUCAUGUCACCUUCGAGGAUGUAGUUGACUAGUUUAUUGUAGCGUCGUGAUAUACAGUG"
             assert "UUGGACGGGCAUCGGAAAUCCAUCGGGCAGAUGUACAGGAGGUCAUGUCACCUUCGAGGAUGUAGUUGACUAGUUUAUUGUAGCGUCGUGAUAUACAGUG"==transcribe(sequence)
 
 def test_reverse_transcribe():
@@ -47,16 +47,16 @@ def test_reverse_transcribe():
     TODO: Write your unit test for the
     reverse transcribe function here.
     """
-    for header,sequence in FastaParser('data/test.fa'):
-        if header=="seq99":
+    for header,sequence in FastaParser('data/test.fa'):#go though everything in test.fa
+        if header=="seq99":#in header seq99, check if the reversed transcribed sequence is "UGGACCGGCCUGGUCGACGCCGCCAAGACCGCCGUAUAAUGGCCCCUGCGGCGUUCGCUGCGGAGUCCAACUUGUAGGGAGUACCCGCAUCGCCGGUUUG"
             assert "UGGACCGGCCUGGUCGACGCCGCCAAGACCGCCGUAUAAUGGCCCCUGCGGCGUUCGCUGCGGAGUCCAACUUGUAGGGAGUACCCGCAUCGCCGGUUUG"==reverse_transcribe(sequence)
-        if header=="seq98":
+        if header=="seq98":#in header seq98, check if the reversed transcribed sequence is "GUCCCGGAGUCCCAGAUAAACUCUCUAGUGAUCGUCGGGUGCGAAUCAAAUUCAACCCAGCAUUGUUGUUCCGGUUGCUAGUUAGCGCGUUUCUCGCUCG"
             assert "GUCCCGGAGUCCCAGAUAAACUCUCUAGUGAUCGUCGGGUGCGAAUCAAAUUCAACCCAGCAUUGUUGUUCCGGUUGCUAGUUAGCGCGUUUCUCGCUCG"==reverse_transcribe(sequence)
 
     #pass
-    for header,sequence,quality in FastqParser('data/test.fq'):
-        if header=="seq99":
+    for header,sequence,quality in FastqParser('data/test.fq'):#go though everything in test.fq
+        if header=="seq99":#in header seq99, check if the reversed transcribed sequence is "CUGCUGGAAGACGGAGCAGGGUCUACGUCCGUACAGUGAAAGGGUUUUAUGACCAAUCGUCUAAGAAUAGGAUUUCAGUUGAGCCCACUACAAAACUCGG"
             assert "CUGCUGGAAGACGGAGCAGGGUCUACGUCCGUACAGUGAAAGGGUUUUAUGACCAAUCGUCUAAGAAUAGGAUUUCAGUUGAGCCCACUACAAAACUCGG"==reverse_transcribe(sequence)
-        if header=="seq98":
+        if header=="seq98":#in header seq98, check if the reversed transcribed sequence is "GUGACAUAUAGUGCUGCGAUGUUAUUUGAUCAGUUGAUGUAGGAGCUUCCACUGUACUGGAGGACAUGUAGACGGGCUACCUAAAGGCUACGGGCAGGUU"
             assert "GUGACAUAUAGUGCUGCGAUGUUAUUUGAUCAGUUGAUGUAGGAGCUUCCACUGUACUGGAGGACAUGUAGACGGGCUACCUAAAGGCUACGGGCAGGUU"==reverse_transcribe(sequence)
     #pass
