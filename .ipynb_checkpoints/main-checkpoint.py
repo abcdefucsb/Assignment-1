@@ -19,14 +19,14 @@ def main():
     for header, sequence in aparser:
         print(header)
         print(transcribe(sequence))
-        print("aparser_transcribe")
+        print("part1")
        
     # For each record of FastqParser, Transcribe the sequence
     # and print it to console
     for header, sequence, quality in qparser:
         print(header)
         print(transcribe(sequence))
-        print("qparser_transcribe")
+        print("part2")
 
 
     # For each record of FastaParser, Reverse Transcribe the sequence
@@ -34,7 +34,7 @@ def main():
     for header,sequence in aparser:
         print(header)
         print(reverse_transcribe(sequence))
-        print("aparser_reverse_transcribe")
+        print("part3")
     
        
     # For each record of FastqParser, Reverse Transcribe the sequence
@@ -43,7 +43,7 @@ def main():
     for header,sequence,quality in qparser:
         print(header)
         print(reverse_transcribe(sequence))
-        print("qparser_reverse_transcribe")
+        print("part4")
 
 """
 When executing a python script from the command line there will

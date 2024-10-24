@@ -74,10 +74,15 @@ class Parser:
 
             # hint: when reading a file, how do we know when to stop reading? what keyword should we use to stop a loop?
 
+            
             while True:
                 rec = self.get_record(f_obj)
                 # TODO: stop the loop
+                if rec==None:
+                    break
                 yield rec
+                
+                
 
     def _get_record(self, f_obj: io.TextIOWrapper) -> Union[Tuple[str, str], Tuple[str, str, str]]:
         """
@@ -98,6 +103,20 @@ class FastaParser(Parser):
         """
         TODO: returns the next fasta record as a 2-tuple of (header, sequence)
         """
+        header=""
+        sequence=""
+        for line in f_obj:
+            line=line.strip()
+            if line.startswith(">seq"):             
+                header=line[1:]
+            elif line.startswith(("A","T","C","G")):
+                for char in line:
+                    sequence += char
+                    
+            if (header != "") and (sequence != ""):
+                return (header.strip(),sequence.strip())
+            
+        
 
 
 class FastqParser(Parser):
@@ -108,4 +127,22 @@ class FastqParser(Parser):
         """
         TODO: returns the next fastq record as a 3-tuple of (header, sequence, quality)
         """
-
+        header=""
+        sequence=""
+        quality=""
+        for line in f_obj:
+            line=line.strip()
+            if line.startswith("@seq"):
+                header=line[1:]
+            elif line.startswith("+ "):
+                pass
+            elif line.startswith(("A","C","T","G")):
+                for char in line:
+                    sequence += char
+             
+            else:
+                quality=line[0:]
+                
+            if (header != "") and (sequence != "") and (quality != ""):
+                return (header.strip(),sequence.strip(),quality.strip())
+           

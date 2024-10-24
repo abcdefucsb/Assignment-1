@@ -5,6 +5,9 @@ from seqparser import (
         FastqParser)
 
 
+
+
+
 def test_freebie_parser_1():
     """
     This one is a freebie
@@ -28,9 +31,14 @@ def test_FastaParser():
     your FastaParser class and assert that it properly
     reads in the example Fasta File.
     """
-    pass
-
-
+    #pass
+    for header,sequence in FastaParser('data/test.fa'):
+        if header=="seq99":
+            assert "CAAACCGGCGATGCGGGTACTCCCTACAAGTTGGACTCCGCAGCGAACGCCGCAGGGGCCATTATACGGCGGTCTTGGCGGCGTCGACCAGGCCGGTCCA"==sequence
+        if header=="seq98":
+            assert "CGAGCGAGAAACGCGCTAACTAGCAACCGGAACAACAATGCTGGGTTGAATTTGATTCGCACCCGACGATCACTAGAGAGTTTATCTGGGACTCCGGGAC"==sequence
+    
+    
 def test_FastqParser():
     """
     TODO: Write your unit test for your FastqParser
@@ -38,4 +46,10 @@ def test_FastqParser():
     your FastqParser class and assert that it properly
     reads in the example Fastq File.
     """
-    pass
+
+    for header, sequence, quality in FastqParser('data/test.fq'):
+        if header=="seq99":
+            assert "CCGAGTTTTGTAGTGGGCTCAACTGAAATCCTATTCTTAGACGATTGGTCATAAAACCCTTTCACTGTACGGACGTAGACCCTGCTCCGTCTTCCAGCAG"==sequence
+        if header=="seq98":
+            assert "AACCTGCCCGTAGCCTTTAGGTAGCCCGTCTACATGTCCTCCAGTACAGTGGAAGCTCCTACATCAACTGATCAAATAACATCGCAGCACTATATGTCAC"==sequence
+    #pass
