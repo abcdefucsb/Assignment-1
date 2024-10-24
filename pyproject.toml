@@ -6,6 +6,8 @@ build-backend = "flit_core.buildapi"
 name = "assignment_1"
 authors = [{name = "Shiyang Xin", email = "Shiyang.xin@ucsf.edu"}]
 readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 
 [project.urls]
