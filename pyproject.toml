@@ -3,10 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "HW1"
+name = "seqparser"
 authors = [{name = "Shiyang Xin", email = "Shiyang.xin@ucsf.edu"}]
 readme = "README.md"
 dynamic = ["version", "description"]
-
-[project.urls]
-Home = "https://github.com/abcdefucsb/AICD3"
